@@ -4,7 +4,7 @@ function App() {
 
   return (
     <>
-      <div className=''>
+      <div className='Underline'>
         Netflix Gpt
       </div>
     </>
