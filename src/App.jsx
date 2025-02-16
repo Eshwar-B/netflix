@@ -1,12 +1,17 @@
-
+import Body from "./components/body"
+import Browse from "./components/Browse"
+import Login from "./components/login"
 
 function App() {
 
   return (
     <>
-      <div className='Underline'>
-        Netflix Gpt
+      <div className=''>
+        
+          <Body/>
+
       </div>
+
     </>
   )
 }
