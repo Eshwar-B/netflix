@@ -1,6 +1,7 @@
-import Body from "./components/body"
-import Browse from "./components/Browse"
-import Login from "./components/login"
+import Body from "./components/body";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+
 
 function App() {
 
@@ -8,7 +9,7 @@ function App() {
     <>
       <div className=''>
         
-          <Body/>
+          <Provider store={appStore}>  <Body />  </Provider>
 
       </div>
 
