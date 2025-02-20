@@ -4,7 +4,7 @@ import { useDispatch ,useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { checkValidData } from "../utils/validate";
 import { auth, googleProvider } from '../utils/firebase';
-import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { addUser } from '../utils/userSlice'
 
 const Login = () => {
@@ -54,19 +54,34 @@ const Login = () => {
 
 
     const handleGoogleSignIn = async () => {
-        try {
+        try 
+        {
             const result = await signInWithPopup(auth, googleProvider);
             const user = result.user;
+
+            // update the user profile
+            updateProfile(user, {
+                displayName: user.displayName, photoURL: user.photoURL
+              }).then(() => {
+                // Profile updated!
+                console.log("Profile Updated")
+              }).catch((error) => {
+                // An error occurred
+                setErrMsg(error.message)
+                console.log("Error Occurred: ", errMsg);
+              });
+
             console.log("Google User Info: ", user);
             console.log("photo URL: ", user.photoURL);
-            // setPhotoURL(user.photoURL);
             dispatch(addUser({
                 uid: user.uid,
                 email: user.email,
                 photoURL: user.photoURL,
             }));
             navigate('/Browse');
-        } catch (error) {
+        } 
+        catch (error) 
+        {
             setErrMsg(error.message);
         }
     };
