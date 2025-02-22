@@ -10,8 +10,6 @@ import { addUser, removeUser } from '../utils/userSlice';
 
 const Body = () => {
 
-    const dispatch = useDispatch();
-
     const appRouter = createBrowserRouter([
         {
             path: '/',
@@ -27,7 +25,7 @@ const Body = () => {
 
 
   return (
-    <div>
+    <div className='overflow-hidden'>
       
         <RouterProvider router={appRouter} />
 

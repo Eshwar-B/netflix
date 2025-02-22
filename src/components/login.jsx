@@ -64,15 +64,16 @@ const Login = () => {
                 displayName: user.displayName, photoURL: user.photoURL
               }).then(() => {
                 // Profile updated!
-                console.log("Profile Updated")
+               // console.log("Profile Updated")
               }).catch((error) => {
                 // An error occurred
                 setErrMsg(error.message)
                 console.log("Error Occurred: ", errMsg);
               });
 
-            console.log("Google User Info: ", user);
-            console.log("photo URL: ", user.photoURL);
+            // console.log("Google User Info: ", user);
+            // console.log("photo URL: ", user.photoURL);
+            
             dispatch(addUser({
                 uid: user.uid,
                 email: user.email,
